@@ -1,0 +1,24 @@
+<html>
+<head>
+    <title>SquirrelCam</title>
+    <script>
+    function deleteLog() {
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function() {
+            if (this.readyState == 4) {
+                document.getElementById("clear-log-response").innerText = this.status;
+            }
+        }
+        request.open("DELETE", document.URL+"log.txt")
+        request.send();
+    }
+    </script>
+</head>
+<body>
+    <a href="snapshot.jpg"><img src="snapshot.jpg"></a>
+    <ul>
+        <li><a href="log.txt">Log</a></li>
+        <li><button onClick="if (confirm('Are you sure you want to clear log content?')) deleteLog()">Clear log</button> <span id="clear-log-response"></span></li>
+    </ul>
+</body>
+</html>
